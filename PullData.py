@@ -1,19 +1,18 @@
 import psycopg2
 try:
    connection = psycopg2.connect(user="",
-                                  password="",
-                                  host="",
-                                  port="",
-                                  database="")
+                                 password="",
+                                 host="",
+                                 port="",
+                                 database="")
    cursor = connection.cursor()
-   postgreSQL_select_Query = "SELECT * FROM pg_catalog.pg_tables"
+   postgreSQL_select_Query = "SELECT result FROM dev_raw limit 10"
    cursor.execute(postgreSQL_select_Query)
-   print("Selecting rows from mobile table using cursor.fetchall")
    spot_table = cursor.fetchall()
 
    print("Print each row and it's columns values")
    for row in spot_table:
-       print("parkingSpot = ", row[0])
+       print('Spot Occupancy Result = ', row[0])
 except (Exception, psycopg2.Error) as error :
     print ("Error while fetching data from PostgreSQL", error)
 finally:
