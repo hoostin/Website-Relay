@@ -1,17 +1,11 @@
-/*eslint-disable */
-var WebSocket = require('ws');
-var exampleSocket = new WebSocket("ws://ec2-1.logicparkdev.com:8000/ws");
+const WebSocket = require('ws');
 
-exampleSocket.onmessage = function(event) {
-  var color = "";
-  var parkingSpot = JSON.parse(event.data);
-  var occupancyStatus = Boolean;
+const ws = new WebSocket('wws://ec2-1.logicparkdev.com:8000/ws');
 
-    if (occupancyStatus == true) {
-        color = "red";
-    }else{
-        color = "green";
-    }
+ws.on('open', function open() {
+  ws.send('ping');
+});
 
-    document.getElementById("rect").style.fill = color;
-};
+ws.on('message', function incoming(data) {
+  console.log(data);
+});
