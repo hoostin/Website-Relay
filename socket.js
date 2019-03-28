@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const ws = new WebSocket('wws://ec2-1.logicparkdev.com:8000/ws');
+const ws = new WebSocket('wss://www.logicparkdev.com/ws');
 
 ws.on('open', function open() {
   ws.send('ping');
